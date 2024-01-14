@@ -4,8 +4,15 @@ import MeetingBlock from "./components/MeetingBlock";
 import TaskItem from "./components/TaskItem";
 import TaskFilter from "./components/Taskfilter";
 import CollegeBlock from "./components/CollegeBlock";
+
 export default function Page() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
 
   const meetings = [
     {
@@ -81,6 +88,9 @@ export default function Page() {
           </div>
         </div>
       </div>
+      <button onClick={handleClick}>
+        You pressed me {count} times
+      </button>
     </div>
   );
 }
