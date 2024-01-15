@@ -1,11 +1,14 @@
+"use client"
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {
+    const router = useRouter();
     const navigation = [
-        { name: 'Dashboard', href: '/dashboard', icon: '🏠' },
+        { name: 'Dashboard', href: '/', icon: '🏠' },
+        { name: 'Profile', href: '/profile', icon: '📁' },
         { name: 'Calendar', href: '/calendar', icon: '📅' },
-        { name: 'My Team', href: '/myteam', icon: '👥' },
-        { name: 'Notes', href: '/notes', icon: '📝' },
+        { name: 'Meetings', href: '/meetings', icon: '👥' },
         { name: 'Assignments', href: '/assignments', icon: '📚' },
     ];
 
@@ -16,11 +19,10 @@ export default function Sidebar() {
                 {navigation.map((item) => (
                     <Link href={item.href} key={item.name}>
                         <div
-                            className={`flex items-center p-2 my-2 transition-colors duration-200 justify-start rounded-lg text-lg cursor-pointer`}
-                        // ${router.pathname === item.href
-                        //     ? 'bg-blue-100 text-blue-700'
-                        //     : 'text-gray-300'
-                        //     }
+                            className={`flex items-center p-2 my-2 transition-colors duration-200 justify-start rounded-lg text-lg cursor-pointer ${router.pathname === item.href
+                                ? 'bg-blue-100 text-blue-700'
+                                : 'text-gray-300'
+                                }`}
                         >
                             <span className="text-left">
                                 {item.icon}
